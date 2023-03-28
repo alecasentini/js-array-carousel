@@ -45,7 +45,7 @@
 // })
 
 
-let arrayImmagini= [
+let arrayImmagini = [
     './assets/img/01.webp',
     './assets/img/02.webp',
     './assets/img/03.webp',
@@ -53,58 +53,32 @@ let arrayImmagini= [
     './assets/img/05.webp',
 ];
 
-let itemsElement = document.querySelector('.items');
+let next = document.querySelector('.next');
+let prev = document.querySelector('.prev');
 
-    for(i = 0; i< arrayImmagini.length; i++){
-        let immagine = arrayImmagini[i];
+let i = 0;
+let image = document.querySelector('.item');
 
-        itemsElement.innerHTML +=  `
-        <div class="item" id='img${i}'>
-            <img src="${immagine}" alt="">
-        </div>
-        `;
-     
+// tasto avanti
+next.addEventListener('click', function() {
+
+    image.setAttribute('src', arrayImmagini[i]);
+    i++;
+
+    if (i >= arrayImmagini.length) {
+        i = 0;
     }
+});
 
-let numeroImmagineAttiva = 0;
-let imgActive = document.getElementById(`img${numeroImmagineAttiva}`);
-imgActive.classList.add('active');
+// tasto precedente
+prev.addEventListener('click', function() {
 
-const prev = document.querySelector('.prev')
-const next = document.querySelector('.next')
+    image.setAttribute('src', arrayImmagini[i]);
+    i--;
 
-const first = document.getElementById (`img${numeroImmagineAttiva}`)
-first.classList.add('first')
-
-const last = document.getElementById (`img4`)
-last.classList.add('last')
-
-next.addEventListener( 'click', function(){
-    imgActive.classList.remove('active')    
-    numeroImmagineAttiva = numeroImmagineAttiva + 1;
-    imgActive = document.getElementById(`img${numeroImmagineAttiva}`);
-    imgActive.classList.add('active');
-
-    let activeItem = document.querySelector('.item .active')
-    let itemToActive = activeItem.nextElementSibling
-
-    if ( activeItem.classList.contains ('last') ){
-    itemToActive = document.querySelector ('.item .first')
+    if (i < 0) {
+        i = arrayImmagini.length - 1;
     }
-})
-
-prev.addEventListener( 'click', function(){
-    imgActive.classList.remove('active')    
-    numeroImmagineAttiva = numeroImmagineAttiva - 1;
-    imgActive = document.getElementById(`img${numeroImmagineAttiva}`);
-    imgActive.classList.add('active');
-
-    let activeItem = document.querySelector('.item .active')
-    let itemToActive = activeItem.previousElementSibling
-
-    if ( activeItem.classList.contains ('first') ){
-    itemToActive = document.querySelector ('.item .last')
-    }
-})
+});
 
 
