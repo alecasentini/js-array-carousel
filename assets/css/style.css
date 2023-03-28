@@ -1,0 +1,23 @@
+.container{
+    border: 1px dashed red;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.slider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.items img{
+    width: 100%;
+}
+
+.item.active{
+    display: block;
+}
+
+.item{
+    display: none;
+}
