@@ -53,23 +53,32 @@ let arrayImmagini = [
     './assets/img/05.webp'
 ];
 
-let next = document.querySelector('.next');
-let prev = document.querySelector('.prev');
 
 let items = document.querySelector(".items");
+let thumbnails = document.querySelector(".thumbnails")
 
 for (i = 0; i < arrayImmagini.length; i++){
     
-    let item = `
+    items.innerHTML += `
     <div class="item">
         <img src="${arrayImmagini[i]}">
     </div>
     `
-    items.innerHTML += item;
+
+
+    thumbnails.innerHTML += `
+    <div class="thumbnail">
+         <img src="${arrayImmagini[i]}">
+    </div>
+    `
+    
     
 }
 let active = 0
 items.getElementsByClassName('item')[active].classList.add('active')
+thumbnails.getElementsByClassName('thumbnail')[active].classList.add('active')
+
+const prev = document.querySelector('.prev');
 
 prev.addEventListener ('click', function(){
     if(active == 0){
@@ -80,7 +89,12 @@ prev.addEventListener ('click', function(){
 
     document.querySelector('.item.active').classList.remove('active')
     items.getElementsByClassName('item')[active].classList.add('active')
+
+    document.querySelector('.thumbnail.active').classList.remove('active')
+    thumbnails.getElementsByClassName('thumbnail')[active].classList.add('active')
 })
+
+const next = document.querySelector('.next');
 
 next.addEventListener ('click', function(){
     if(active == arrayImmagini.length - 1){
@@ -91,5 +105,8 @@ next.addEventListener ('click', function(){
 
     document.querySelector('.item.active').classList.remove('active')
     items.getElementsByClassName('item')[active].classList.add('active')
+
+    document.querySelector('.thumbnail.active').classList.remove('active')
+    thumbnails.getElementsByClassName('thumbnail')[active].classList.add('active')
 })
 
