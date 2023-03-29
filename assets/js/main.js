@@ -56,29 +56,18 @@ let arrayImmagini = [
 let next = document.querySelector('.next');
 let prev = document.querySelector('.prev');
 
-let i = 0;
-let image = document.querySelector('.item');
+let items = document.querySelector(".items");
+for (i = 0; i < arrayImmagini.length; i++){
+    
+    let item = `
+    <div class="item">
+        <img src="${arrayImmagini[i]}">
+    </div>
+    `
+    items.innerHTML += item;
+    
+}
 
-// tasto avanti
-next.addEventListener('click', function() {
 
-    image.setAttribute('src', arrayImmagini[i]);
-    i++;
-
-    if (i >= arrayImmagini.length) {
-        i = 0;
-    }
-});
-
-// tasto precedente
-prev.addEventListener('click', function() {
-
-    image.setAttribute('src', arrayImmagini[i]);
-    i--;
-
-    if (i < 0) {
-        i = arrayImmagini.length - 1;
-    }
-});
 
 
